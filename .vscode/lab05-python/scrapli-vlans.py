@@ -9,7 +9,7 @@ from scrapli.exceptions import (
 # define variables
 username = "admin"
 password = getpass("Enter admin password: ")
-switches = ["10.10.20.173", "10.10.20.174"]
+switches = ["172.16.100.21", "172.16.100.22"]
 cmds = ["vlan 10", "vlan 20", "vlan 30",]
 
 #connect to both switches & handle auth/ timeout exceptions - narrower than exception
