@@ -1,0 +1,13 @@
+rtr1:
+  hostname: 172.16.100.11
+  groups: [ios]
+  data:
+    site:
+    role:
+
+rtr2:
+  hostname: 172.16.100.12
+  groups: [ios]
+  data:
+    site:
+    role:
