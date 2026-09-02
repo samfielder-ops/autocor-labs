@@ -9,13 +9,13 @@ import getpass
 
 # define variables
 username = "admin"
-password = getpass("Enter admin password: ")
 switches = ["172.16.100.21", "172.16.100.22"]
 cmds = ["vlan 10", "vlan 20", "vlan 30",]
 
 
 #connect to both switches & handle auth/ timeout exceptions - narrower than exception
 def addVlans():
+	password = getpass.getpass("Enter admin password: ")
 	for switch in switches:
 		device = {
 			"device_type": "cisco_ios",

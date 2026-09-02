@@ -1,13 +1,41 @@
+sw1:
+  hostname: 172.16.100.21
+  groups: [ios]
+  data:
+    site: cml
+    role: switch
+
+sw2:
+  hostname: 172.16.100.22
+  groups: [ios]
+  data:
+    site: cml
+    role: switch
+
+sw3:
+  hostname: 172.16.100.30
+  groups: [ios]
+  data:
+    site: cml
+    role: c8k
+
 rtr1:
   hostname: 172.16.100.11
   groups: [ios]
   data:
-    site:
-    role:
+    site: cml
+    role: router
 
 rtr2:
   hostname: 172.16.100.12
   groups: [ios]
   data:
-    site:
-    role:
+    site: cml
+    role: router
+
+rtr3:
+  hostname: 172.16.100.13
+  groups: [ios]
+  data:
+    site: cml
+    role: router

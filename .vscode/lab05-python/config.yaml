@@ -6,4 +6,4 @@ inventory:
   runner:
     plugin: threaded
     options:
-      num_workers: 5
+      num_workers: 10
