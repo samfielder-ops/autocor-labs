@@ -1,0 +1,2 @@
+2026-09-03 06:57:48,394 -  nornir.core -     INFO -        run() - Running task 'loopback desc' with args {'commands': ['interface Loopback0', 'description Nornir Configured This']} on 6 hosts
+2026-09-03 06:57:51,443 -  nornir.core -     INFO -        run() - Running task 'vlans' with args {'commands': ['vlan 10', 'vlan 20', 'vlan 30']} on 2 hosts

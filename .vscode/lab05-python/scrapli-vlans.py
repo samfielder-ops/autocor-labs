@@ -3,7 +3,8 @@ from scrapli.driver.core import IOSXEDriver
 from scrapli.exceptions import (
     ScrapliAuthenticationFailed, 
     ScrapliTimeout, 
-    ScrapliConnectionError
+    ScrapliConnectionError,
+	ScrapliException
     )
 
 # define variables
@@ -16,7 +17,6 @@ def addVlans():
 	password = getpass.getpass("Enter admin password: ")
 	for switch in switches:
 		device = {
-			"device_type": "cisco_ios",
 			"host": switch,
 			"auth_username": username,
 			"auth_password": password,
@@ -25,25 +25,26 @@ def addVlans():
 		}
 		try:
 			with IOSXEDriver(**device) as connect:
-				output = connect.send_configs(cmds)
+				connect.send_configs(cmds)
 				connect.send_command("write memory")
-				print(output)
-#i suspect this part wont work, connect being passed
 				result = verify(connect)
 				print(result)
+		
 		except ScrapliConnectionError:
 			print("Connection Error")
 		except ScrapliAuthenticationFailed:
 			print("Auth Error")
 		except ScrapliTimeout:
 			print("Timeout Error")
+		except ScrapliException as e:
+			print(f"Connection Error {e}")
 		
 
 #Verify with show vlan brief and return
 def verify(connect):
-	result = connect.send_command("show vlan brief",use_textfsm=True)
-	print(result)
-	return result.json()
+	result = connect.send_command("show vlan brief")
+	structured_result = result.textfsm_parse_output()
+	return structured_result
 
 def main():
 	addVlans()

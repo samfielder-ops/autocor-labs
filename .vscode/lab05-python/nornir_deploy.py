@@ -20,7 +20,7 @@ def push_config(task: Task, commands: list[str]):
 
 def main():
     nr = InitNornir(config_file="config.yaml")
-    nr.inventory.defaults.username = input("Username: ") or getpass.getuser()
+    nr.inventory.defaults.username = getpass.getuser() 
     nr.inventory.defaults.password = getpass.getpass("Password: ")
 
     results = []
