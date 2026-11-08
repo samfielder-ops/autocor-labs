@@ -1,0 +1,36 @@
+sw1:
+  hostname: 192.168.100.21
+  groups: [ios]
+  data:
+    site: cml
+    role: switch
+sw2:
+  hostname: 192.168.100.22
+  groups: [ios]
+  data:
+    site: cml
+    role: switch
+sw3:
+  hostname: 192.168.100.30
+  groups: [ios]
+  data:
+    site: cml
+    role: switch
+rtr1:
+  hostname: 192.168.100.11
+  groups: [ios]
+  data:
+    site: cml
+    role: router
+rtr2:
+  hostname: 192.168.100.12
+  groups: [ios]
+  data:
+    site: cml
+    role: router
+rtr3:
+  hostname: 192.168.100.13
+  groups: [ios]
+  data:
+    site: cml
+    role: router
