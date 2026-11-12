@@ -9,6 +9,7 @@ from nornir_utils.plugins.functions import print_result
 from nornir_netmiko.tasks import netmiko_send_config, netmiko_save_config
 from nornir.core.task import Task, Result
 import getpass, sys
+from pprint import pprint
 
 vlan_cmds = ["vlan 10", " name DATA", "vlan 20", " name VOICE", "vlan 30", "name MGMT"]
 int_cmds = ["interface Loopback0", " description Nornir Conf"]
@@ -28,12 +29,13 @@ def main():
     if not cml.inventory.hosts:
         print("no hosts matched site=cml", file=sys.stderr)
         return 1
-    results.append(cml.run(task=config_push(), name="loopback desc", commands=int_cmds))
+    results.append(cml.run(task=config_push, name="loopback desc", commands=int_cmds))
     sw = nornir.filter(role="switch")
+    pprint(sw)
     if not sw.inventory.hosts:
         print("no hosts matched role=switch", file=sys.stderr)
         return 1
-    results.append(sw.run(task=config_push(), name="vlans", commands=vlan_cmds))
+    results.append(sw.run(task=config_push, name="vlans", commands=vlan_cmds))
 
     for r in results:
         print_result(r)

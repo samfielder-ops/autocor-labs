@@ -1,0 +1,1421 @@
+2026-11-11 11:16:47,069 - nornir.plugins.inventory.simple -  WARNING -       load() - 'groups.yaml' is empty or contains only comments, defaulting to empty groups inventory.
+2026-11-11 11:22:57,649 -  nornir.core -     INFO -        run() - Running task 'loopback desc' with args {'commands': ['interface Loopback0', ' description Nornir Conf']} on 6 hosts
+2026-11-11 11:23:00,198 -  nornir.core -     INFO -        run() - Running task 'vlans' with args {'commands': ['vlan 10', ' name DATA', 'vlan 20', ' name VOICE', 'vlan 30', 'name MGMT']} on 3 hosts
+2026-11-11 11:31:26,031 -  nornir.core -     INFO -        run() - Running task 'loopback desc' with args {'commands': ['interface Loopback0', ' description Nornir Conf']} on 6 hosts
+2026-11-11 11:31:27,045 - nornir.core.task -    ERROR -      start() - Host 'rtr1': task 'netmiko_send_config' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 1153, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/paramiko/client.py", line 409, in connect
+    raise NoValidConnectionsError(errors)
+paramiko.ssh_exception.NoValidConnectionsError: [Errno None] Unable to connect to port 22 on 172.16.100.11
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/tasks/netmiko_send_config.py", line 28, in netmiko_send_config
+    net_connect = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/inventory.py", line 600, in get_connection
+    self.open_connection(
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/inventory.py", line 654, in open_connection
+    conn_obj.open(
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/connections/netmiko.py", line 59, in open
+    connection = ConnectHandler(**parameters)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/ssh_dispatcher.py", line 516, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 491, in __init__
+    self._open()
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 509, in _open
+    self.establish_connection()
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 1175, in establish_connection
+    raise NetmikoTimeoutException(msg)
+netmiko.exceptions.NetmikoTimeoutException: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: cisco_ios 172.16.100.11:22
+
+
+2026-11-11 11:31:27,046 - nornir.core.task -    ERROR -      start() - Host 'rtr2': task 'netmiko_send_config' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 1153, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/paramiko/client.py", line 409, in connect
+    raise NoValidConnectionsError(errors)
+paramiko.ssh_exception.NoValidConnectionsError: [Errno None] Unable to connect to port 22 on 172.16.100.12
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/tasks/netmiko_send_config.py", line 28, in netmiko_send_config
+    net_connect = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/inventory.py", line 600, in get_connection
+    self.open_connection(
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/inventory.py", line 654, in open_connection
+    conn_obj.open(
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/connections/netmiko.py", line 59, in open
+    connection = ConnectHandler(**parameters)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/ssh_dispatcher.py", line 516, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 491, in __init__
+    self._open()
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 509, in _open
+    self.establish_connection()
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 1175, in establish_connection
+    raise NetmikoTimeoutException(msg)
+netmiko.exceptions.NetmikoTimeoutException: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: cisco_ios 172.16.100.12:22
+
+
+2026-11-11 11:31:27,046 - nornir.core.task -    ERROR -      start() - Host 'rtr3': task 'netmiko_send_config' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 1153, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/paramiko/client.py", line 409, in connect
+    raise NoValidConnectionsError(errors)
+paramiko.ssh_exception.NoValidConnectionsError: [Errno None] Unable to connect to port 22 on 172.16.100.13
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/tasks/netmiko_send_config.py", line 28, in netmiko_send_config
+    net_connect = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/inventory.py", line 600, in get_connection
+    self.open_connection(
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/inventory.py", line 654, in open_connection
+    conn_obj.open(
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/connections/netmiko.py", line 59, in open
+    connection = ConnectHandler(**parameters)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/ssh_dispatcher.py", line 516, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 491, in __init__
+    self._open()
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 509, in _open
+    self.establish_connection()
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 1175, in establish_connection
+    raise NetmikoTimeoutException(msg)
+netmiko.exceptions.NetmikoTimeoutException: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: cisco_ios 172.16.100.13:22
+
+
+2026-11-11 11:31:27,047 - nornir.core.task -    ERROR -      start() - Host 'rtr1': task 'loopback desc' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ deploy.py", line 17, in config_push
+    task.run(task=netmiko_send_config, config_commands=commands)
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 186, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: netmiko_send_config (failed)
+
+2026-11-11 11:31:27,048 - nornir.core.task -    ERROR -      start() - Host 'rtr2': task 'loopback desc' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ deploy.py", line 17, in config_push
+    task.run(task=netmiko_send_config, config_commands=commands)
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 186, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: netmiko_send_config (failed)
+
+2026-11-11 11:31:27,049 - nornir.core.task -    ERROR -      start() - Host 'rtr3': task 'loopback desc' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ deploy.py", line 17, in config_push
+    task.run(task=netmiko_send_config, config_commands=commands)
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 186, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: netmiko_send_config (failed)
+
+2026-11-11 11:31:29,088 - nornir.core.task -    ERROR -      start() - Host 'sw3': task 'netmiko_send_config' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 1153, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/paramiko/client.py", line 409, in connect
+    raise NoValidConnectionsError(errors)
+paramiko.ssh_exception.NoValidConnectionsError: [Errno None] Unable to connect to port 22 on 172.16.100.10
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/tasks/netmiko_send_config.py", line 28, in netmiko_send_config
+    net_connect = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/inventory.py", line 600, in get_connection
+    self.open_connection(
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/inventory.py", line 654, in open_connection
+    conn_obj.open(
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/connections/netmiko.py", line 59, in open
+    connection = ConnectHandler(**parameters)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/ssh_dispatcher.py", line 516, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 491, in __init__
+    self._open()
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 509, in _open
+    self.establish_connection()
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 1175, in establish_connection
+    raise NetmikoTimeoutException(msg)
+netmiko.exceptions.NetmikoTimeoutException: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: cisco_ios 172.16.100.10:22
+
+
+2026-11-11 11:31:29,088 - nornir.core.task -    ERROR -      start() - Host 'sw3': task 'loopback desc' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ deploy.py", line 17, in config_push
+    task.run(task=netmiko_send_config, config_commands=commands)
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 186, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: netmiko_send_config (failed)
+
+2026-11-11 11:31:29,090 -  nornir.core -     INFO -        run() - Running task 'vlans' with args {'commands': ['vlan 10', ' name DATA', 'vlan 20', ' name VOICE', 'vlan 30', 'name MGMT']} on 2 hosts
+2026-11-11 11:35:46,454 -  nornir.core -     INFO -        run() - Running task 'loopback desc' with args {'commands': ['interface Loopback0', ' description Nornir Conf']} on 6 hosts
+2026-11-11 11:35:46,471 - nornir.core.task -    ERROR -      start() - Host 'rtr2': task 'netmiko_send_config' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 1153, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/paramiko/client.py", line 409, in connect
+    raise NoValidConnectionsError(errors)
+paramiko.ssh_exception.NoValidConnectionsError: [Errno None] Unable to connect to port 22 on 172.16.100.12
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/tasks/netmiko_send_config.py", line 28, in netmiko_send_config
+    net_connect = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/inventory.py", line 600, in get_connection
+    self.open_connection(
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/inventory.py", line 654, in open_connection
+    conn_obj.open(
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/connections/netmiko.py", line 59, in open
+    connection = ConnectHandler(**parameters)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/ssh_dispatcher.py", line 516, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 491, in __init__
+    self._open()
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 509, in _open
+    self.establish_connection()
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 1175, in establish_connection
+    raise NetmikoTimeoutException(msg)
+netmiko.exceptions.NetmikoTimeoutException: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: cisco_ios 172.16.100.12:22
+
+
+2026-11-11 11:35:46,472 - nornir.core.task -    ERROR -      start() - Host 'rtr2': task 'loopback desc' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ deploy.py", line 18, in config_push
+    task.run(task=netmiko_send_config, config_commands=commands)
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 186, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: netmiko_send_config (failed)
+
+2026-11-11 11:35:46,473 - nornir.core.task -    ERROR -      start() - Host 'rtr3': task 'netmiko_send_config' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 1153, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/paramiko/client.py", line 409, in connect
+    raise NoValidConnectionsError(errors)
+paramiko.ssh_exception.NoValidConnectionsError: [Errno None] Unable to connect to port 22 on 172.16.100.13
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/tasks/netmiko_send_config.py", line 28, in netmiko_send_config
+    net_connect = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/inventory.py", line 600, in get_connection
+    self.open_connection(
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/inventory.py", line 654, in open_connection
+    conn_obj.open(
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/connections/netmiko.py", line 59, in open
+    connection = ConnectHandler(**parameters)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/ssh_dispatcher.py", line 516, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 491, in __init__
+    self._open()
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 509, in _open
+    self.establish_connection()
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 1175, in establish_connection
+    raise NetmikoTimeoutException(msg)
+netmiko.exceptions.NetmikoTimeoutException: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: cisco_ios 172.16.100.13:22
+
+
+2026-11-11 11:35:46,474 - nornir.core.task -    ERROR -      start() - Host 'rtr1': task 'netmiko_send_config' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 1153, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/paramiko/client.py", line 409, in connect
+    raise NoValidConnectionsError(errors)
+paramiko.ssh_exception.NoValidConnectionsError: [Errno None] Unable to connect to port 22 on 172.16.100.11
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/tasks/netmiko_send_config.py", line 28, in netmiko_send_config
+    net_connect = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/inventory.py", line 600, in get_connection
+    self.open_connection(
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/inventory.py", line 654, in open_connection
+    conn_obj.open(
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/connections/netmiko.py", line 59, in open
+    connection = ConnectHandler(**parameters)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/ssh_dispatcher.py", line 516, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 491, in __init__
+    self._open()
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 509, in _open
+    self.establish_connection()
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 1175, in establish_connection
+    raise NetmikoTimeoutException(msg)
+netmiko.exceptions.NetmikoTimeoutException: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: cisco_ios 172.16.100.11:22
+
+
+2026-11-11 11:35:46,474 - nornir.core.task -    ERROR -      start() - Host 'rtr3': task 'loopback desc' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ deploy.py", line 18, in config_push
+    task.run(task=netmiko_send_config, config_commands=commands)
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 186, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: netmiko_send_config (failed)
+
+2026-11-11 11:35:46,475 - nornir.core.task -    ERROR -      start() - Host 'rtr1': task 'loopback desc' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ deploy.py", line 18, in config_push
+    task.run(task=netmiko_send_config, config_commands=commands)
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 186, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: netmiko_send_config (failed)
+
+2026-11-11 11:35:49,570 - nornir.core.task -    ERROR -      start() - Host 'sw3': task 'netmiko_send_config' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 1153, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/paramiko/client.py", line 409, in connect
+    raise NoValidConnectionsError(errors)
+paramiko.ssh_exception.NoValidConnectionsError: [Errno None] Unable to connect to port 22 on 172.16.100.10
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/tasks/netmiko_send_config.py", line 28, in netmiko_send_config
+    net_connect = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/inventory.py", line 600, in get_connection
+    self.open_connection(
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/inventory.py", line 654, in open_connection
+    conn_obj.open(
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/connections/netmiko.py", line 59, in open
+    connection = ConnectHandler(**parameters)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/ssh_dispatcher.py", line 516, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 491, in __init__
+    self._open()
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 509, in _open
+    self.establish_connection()
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 1175, in establish_connection
+    raise NetmikoTimeoutException(msg)
+netmiko.exceptions.NetmikoTimeoutException: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: cisco_ios 172.16.100.10:22
+
+
+2026-11-11 11:35:49,573 - nornir.core.task -    ERROR -      start() - Host 'sw3': task 'loopback desc' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ deploy.py", line 18, in config_push
+    task.run(task=netmiko_send_config, config_commands=commands)
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 186, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: netmiko_send_config (failed)
+
+2026-11-11 11:35:49,575 -  nornir.core -     INFO -        run() - Running task 'vlans' with args {'commands': ['vlan 10', ' name DATA', 'vlan 20', ' name VOICE', 'vlan 30', 'name MGMT']} on 2 hosts
+2026-11-11 11:39:21,254 -  nornir.core -     INFO -        run() - Running task 'loopback desc' with args {'commands': ['interface Loopback0', ' description Nornir Conf']} on 6 hosts
+2026-11-11 11:39:24,353 - nornir.core.task -    ERROR -      start() - Host 'sw3': task 'netmiko_send_config' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 1153, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/paramiko/client.py", line 409, in connect
+    raise NoValidConnectionsError(errors)
+paramiko.ssh_exception.NoValidConnectionsError: [Errno None] Unable to connect to port 22 on 172.16.100.10
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/tasks/netmiko_send_config.py", line 28, in netmiko_send_config
+    net_connect = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/inventory.py", line 600, in get_connection
+    self.open_connection(
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/inventory.py", line 654, in open_connection
+    conn_obj.open(
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/connections/netmiko.py", line 59, in open
+    connection = ConnectHandler(**parameters)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/ssh_dispatcher.py", line 516, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 491, in __init__
+    self._open()
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 509, in _open
+    self.establish_connection()
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 1175, in establish_connection
+    raise NetmikoTimeoutException(msg)
+netmiko.exceptions.NetmikoTimeoutException: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: cisco_ios 172.16.100.10:22
+
+
+2026-11-11 11:39:24,354 - nornir.core.task -    ERROR -      start() - Host 'sw3': task 'loopback desc' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ deploy.py", line 18, in config_push
+    task.run(task=netmiko_send_config, config_commands=commands)
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 186, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: netmiko_send_config (failed)
+
+2026-11-11 11:39:24,355 -  nornir.core -     INFO -        run() - Running task 'vlans' with args {'commands': ['vlan 10', ' name DATA', 'vlan 20', ' name VOICE', 'vlan 30', 'name MGMT']} on 2 hosts
+2026-11-11 11:42:25,213 -  nornir.core -     INFO -        run() - Running task 'loopback desc' with args {'commands': ['interface Loopback0', ' description Nornir Conf']} on 5 hosts
+2026-11-11 11:42:28,255 -  nornir.core -     INFO -        run() - Running task 'vlans' with args {'commands': ['vlan 10', ' name DATA', 'vlan 20', ' name VOICE', 'vlan 30', 'name MGMT']} on 2 hosts
+2026-11-11 11:59:45,802 -  nornir.core -     INFO -        run() - Running task 'loopback desc' with args {'commands': ['interface Loopback0', ' description Nornir Conf']} on 5 hosts
+2026-11-11 11:59:46,824 - nornir.core.task -    ERROR -      start() - Host 'rtr2': task 'netmiko_send_config' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 1153, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/paramiko/client.py", line 409, in connect
+    raise NoValidConnectionsError(errors)
+paramiko.ssh_exception.NoValidConnectionsError: [Errno None] Unable to connect to port 22 on 172.16.100.12
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/tasks/netmiko_send_config.py", line 28, in netmiko_send_config
+    net_connect = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/inventory.py", line 600, in get_connection
+    self.open_connection(
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/inventory.py", line 654, in open_connection
+    conn_obj.open(
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/connections/netmiko.py", line 59, in open
+    connection = ConnectHandler(**parameters)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/ssh_dispatcher.py", line 516, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 491, in __init__
+    self._open()
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 509, in _open
+    self.establish_connection()
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 1175, in establish_connection
+    raise NetmikoTimeoutException(msg)
+netmiko.exceptions.NetmikoTimeoutException: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: cisco_ios 172.16.100.12:22
+
+
+2026-11-11 11:59:46,825 - nornir.core.task -    ERROR -      start() - Host 'rtr2': task 'loopback desc' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ deploy.py", line 18, in config_push
+    task.run(task=netmiko_send_config, config_commands=commands)
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 186, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: netmiko_send_config (failed)
+
+2026-11-11 11:59:46,826 - nornir.core.task -    ERROR -      start() - Host 'rtr1': task 'netmiko_send_config' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 1153, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/paramiko/client.py", line 409, in connect
+    raise NoValidConnectionsError(errors)
+paramiko.ssh_exception.NoValidConnectionsError: [Errno None] Unable to connect to port 22 on 172.16.100.11
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/tasks/netmiko_send_config.py", line 28, in netmiko_send_config
+    net_connect = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/inventory.py", line 600, in get_connection
+    self.open_connection(
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/inventory.py", line 654, in open_connection
+    conn_obj.open(
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/connections/netmiko.py", line 59, in open
+    connection = ConnectHandler(**parameters)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/ssh_dispatcher.py", line 516, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 491, in __init__
+    self._open()
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 509, in _open
+    self.establish_connection()
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 1175, in establish_connection
+    raise NetmikoTimeoutException(msg)
+netmiko.exceptions.NetmikoTimeoutException: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: cisco_ios 172.16.100.11:22
+
+
+2026-11-11 11:59:46,827 - nornir.core.task -    ERROR -      start() - Host 'rtr3': task 'netmiko_send_config' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 1153, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/paramiko/client.py", line 409, in connect
+    raise NoValidConnectionsError(errors)
+paramiko.ssh_exception.NoValidConnectionsError: [Errno None] Unable to connect to port 22 on 172.16.100.13
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/tasks/netmiko_send_config.py", line 28, in netmiko_send_config
+    net_connect = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/inventory.py", line 600, in get_connection
+    self.open_connection(
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/inventory.py", line 654, in open_connection
+    conn_obj.open(
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/connections/netmiko.py", line 59, in open
+    connection = ConnectHandler(**parameters)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/ssh_dispatcher.py", line 516, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 491, in __init__
+    self._open()
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 509, in _open
+    self.establish_connection()
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 1175, in establish_connection
+    raise NetmikoTimeoutException(msg)
+netmiko.exceptions.NetmikoTimeoutException: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: cisco_ios 172.16.100.13:22
+
+
+2026-11-11 11:59:46,830 - nornir.core.task -    ERROR -      start() - Host 'rtr3': task 'loopback desc' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ deploy.py", line 18, in config_push
+    task.run(task=netmiko_send_config, config_commands=commands)
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 186, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: netmiko_send_config (failed)
+
+2026-11-11 11:59:46,829 - nornir.core.task -    ERROR -      start() - Host 'rtr1': task 'loopback desc' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ deploy.py", line 18, in config_push
+    task.run(task=netmiko_send_config, config_commands=commands)
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 186, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: netmiko_send_config (failed)
+
+2026-11-11 11:59:55,817 - nornir.core.task -    ERROR -      start() - Host 'sw2': task 'netmiko_send_config' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 1153, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/paramiko/client.py", line 386, in connect
+    sock.connect(addr)
+TimeoutError: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/tasks/netmiko_send_config.py", line 28, in netmiko_send_config
+    net_connect = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/inventory.py", line 600, in get_connection
+    self.open_connection(
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/inventory.py", line 654, in open_connection
+    conn_obj.open(
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/connections/netmiko.py", line 59, in open
+    connection = ConnectHandler(**parameters)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/ssh_dispatcher.py", line 516, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 491, in __init__
+    self._open()
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 509, in _open
+    self.establish_connection()
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 1175, in establish_connection
+    raise NetmikoTimeoutException(msg)
+netmiko.exceptions.NetmikoTimeoutException: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: cisco_ios 172.16.100.22:22
+
+
+2026-11-11 11:59:55,819 - nornir.core.task -    ERROR -      start() - Host 'sw2': task 'loopback desc' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ deploy.py", line 18, in config_push
+    task.run(task=netmiko_send_config, config_commands=commands)
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 186, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: netmiko_send_config (failed)
+
+2026-11-11 11:59:55,820 - nornir.core.task -    ERROR -      start() - Host 'sw1': task 'netmiko_send_config' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 1153, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/paramiko/client.py", line 386, in connect
+    sock.connect(addr)
+TimeoutError: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/tasks/netmiko_send_config.py", line 28, in netmiko_send_config
+    net_connect = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/inventory.py", line 600, in get_connection
+    self.open_connection(
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/inventory.py", line 654, in open_connection
+    conn_obj.open(
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/connections/netmiko.py", line 59, in open
+    connection = ConnectHandler(**parameters)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/ssh_dispatcher.py", line 516, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 491, in __init__
+    self._open()
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 509, in _open
+    self.establish_connection()
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 1175, in establish_connection
+    raise NetmikoTimeoutException(msg)
+netmiko.exceptions.NetmikoTimeoutException: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: cisco_ios 172.16.100.21:22
+
+
+2026-11-11 11:59:55,823 - nornir.core.task -    ERROR -      start() - Host 'sw1': task 'loopback desc' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ deploy.py", line 18, in config_push
+    task.run(task=netmiko_send_config, config_commands=commands)
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 186, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: netmiko_send_config (failed)
+
+2026-11-11 11:59:55,824 -  nornir.core -  WARNING -        run() - Task 'vlans' has not been run – 0 hosts selected
+2026-11-11 12:01:44,329 -  nornir.core -     INFO -        run() - Running task 'loopback desc' with args {'commands': ['interface Loopback0', ' description Nornir Conf']} on 5 hosts
+2026-11-11 12:01:44,341 - nornir.core.task -    ERROR -      start() - Host 'rtr1': task 'netmiko_send_config' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 1153, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/paramiko/client.py", line 409, in connect
+    raise NoValidConnectionsError(errors)
+paramiko.ssh_exception.NoValidConnectionsError: [Errno None] Unable to connect to port 22 on 172.16.100.11
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/tasks/netmiko_send_config.py", line 28, in netmiko_send_config
+    net_connect = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/inventory.py", line 600, in get_connection
+    self.open_connection(
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/inventory.py", line 654, in open_connection
+    conn_obj.open(
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/connections/netmiko.py", line 59, in open
+    connection = ConnectHandler(**parameters)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/ssh_dispatcher.py", line 516, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 491, in __init__
+    self._open()
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 509, in _open
+    self.establish_connection()
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 1175, in establish_connection
+    raise NetmikoTimeoutException(msg)
+netmiko.exceptions.NetmikoTimeoutException: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: cisco_ios 172.16.100.11:22
+
+
+2026-11-11 12:01:44,343 - nornir.core.task -    ERROR -      start() - Host 'rtr2': task 'netmiko_send_config' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 1153, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/paramiko/client.py", line 409, in connect
+    raise NoValidConnectionsError(errors)
+paramiko.ssh_exception.NoValidConnectionsError: [Errno None] Unable to connect to port 22 on 172.16.100.12
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/tasks/netmiko_send_config.py", line 28, in netmiko_send_config
+    net_connect = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/inventory.py", line 600, in get_connection
+    self.open_connection(
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/inventory.py", line 654, in open_connection
+    conn_obj.open(
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/connections/netmiko.py", line 59, in open
+    connection = ConnectHandler(**parameters)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/ssh_dispatcher.py", line 516, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 491, in __init__
+    self._open()
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 509, in _open
+    self.establish_connection()
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 1175, in establish_connection
+    raise NetmikoTimeoutException(msg)
+netmiko.exceptions.NetmikoTimeoutException: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: cisco_ios 172.16.100.12:22
+
+
+2026-11-11 12:01:44,343 - nornir.core.task -    ERROR -      start() - Host 'rtr1': task 'loopback desc' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ deploy.py", line 18, in config_push
+    task.run(task=netmiko_send_config, config_commands=commands)
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 186, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: netmiko_send_config (failed)
+
+2026-11-11 12:01:44,344 - nornir.core.task -    ERROR -      start() - Host 'rtr2': task 'loopback desc' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ deploy.py", line 18, in config_push
+    task.run(task=netmiko_send_config, config_commands=commands)
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 186, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: netmiko_send_config (failed)
+
+2026-11-11 12:01:44,345 - nornir.core.task -    ERROR -      start() - Host 'rtr3': task 'netmiko_send_config' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 1153, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/paramiko/client.py", line 409, in connect
+    raise NoValidConnectionsError(errors)
+paramiko.ssh_exception.NoValidConnectionsError: [Errno None] Unable to connect to port 22 on 172.16.100.13
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/tasks/netmiko_send_config.py", line 28, in netmiko_send_config
+    net_connect = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/inventory.py", line 600, in get_connection
+    self.open_connection(
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/inventory.py", line 654, in open_connection
+    conn_obj.open(
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/connections/netmiko.py", line 59, in open
+    connection = ConnectHandler(**parameters)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/ssh_dispatcher.py", line 516, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 491, in __init__
+    self._open()
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 509, in _open
+    self.establish_connection()
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/netmiko/base_connection.py", line 1175, in establish_connection
+    raise NetmikoTimeoutException(msg)
+netmiko.exceptions.NetmikoTimeoutException: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: cisco_ios 172.16.100.13:22
+
+
+2026-11-11 12:01:44,346 - nornir.core.task -    ERROR -      start() - Host 'rtr3': task 'loopback desc' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ deploy.py", line 18, in config_push
+    task.run(task=netmiko_send_config, config_commands=commands)
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 186, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: netmiko_send_config (failed)
+
+2026-11-11 12:01:46,909 -  nornir.core -     INFO -        run() - Running task 'vlans' with args {'commands': ['vlan 10', ' name DATA', 'vlan 20', ' name VOICE', 'vlan 30', 'name MGMT']} on 2 hosts
+2026-11-11 12:09:02,634 -  nornir.core -     INFO -        run() - Running task 'loopback desc' with args {'commands': ['interface Loopback0', ' description Nornir Conf']} on 5 hosts
+2026-11-11 12:09:06,715 -  nornir.core -     INFO -        run() - Running task 'vlans' with args {'commands': ['vlan 10', ' name DATA', 'vlan 20', ' name VOICE', 'vlan 30', 'name MGMT']} on 2 hosts
+2026-11-12 05:20:31,553 -  nornir.core -     INFO -        run() - Running task 'netmiko_send_config' with args {'command_string': ['interface loopback1', 'interface loopback2', 'interface loopback3', 'interface loopback4', 'interface loopback5', 'interface loopback6', 'interface loopback7', 'interface loopback8', 'interface loopback9', 'interface loopback10']} on 5 hosts
+2026-11-12 05:20:32,100 - nornir.core.task -    ERROR -      start() - Host 'sw2': task 'netmiko_send_config' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/tasks/netmiko_send_config.py", line 42, in netmiko_send_config
+    raise ValueError("Must specify either config_commands or config_file")
+ValueError: Must specify either config_commands or config_file
+2026-11-12 05:20:32,200 - nornir.core.task -    ERROR -      start() - Host 'sw1': task 'netmiko_send_config' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/tasks/netmiko_send_config.py", line 42, in netmiko_send_config
+    raise ValueError("Must specify either config_commands or config_file")
+ValueError: Must specify either config_commands or config_file
+2026-11-12 05:20:32,220 - nornir.core.task -    ERROR -      start() - Host 'rtr3': task 'netmiko_send_config' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/tasks/netmiko_send_config.py", line 42, in netmiko_send_config
+    raise ValueError("Must specify either config_commands or config_file")
+ValueError: Must specify either config_commands or config_file
+2026-11-12 05:20:32,222 - nornir.core.task -    ERROR -      start() - Host 'rtr1': task 'netmiko_send_config' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/tasks/netmiko_send_config.py", line 42, in netmiko_send_config
+    raise ValueError("Must specify either config_commands or config_file")
+ValueError: Must specify either config_commands or config_file
+2026-11-12 05:20:32,229 - nornir.core.task -    ERROR -      start() - Host 'rtr2': task 'netmiko_send_config' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/tasks/netmiko_send_config.py", line 42, in netmiko_send_config
+    raise ValueError("Must specify either config_commands or config_file")
+ValueError: Must specify either config_commands or config_file
+2026-11-12 05:26:43,886 -  nornir.core -     INFO -        run() - Running task 'netmiko_send_config' with args {'command_string': ['interface loopback1', 'interface loopback2', 'interface loopback3', 'interface loopback4', 'interface loopback5', 'interface loopback6', 'interface loopback7', 'interface loopback8', 'interface loopback9', 'interface loopback10']} on 5 hosts
+2026-11-12 05:26:44,417 - nornir.core.task -    ERROR -      start() - Host 'sw1': task 'netmiko_send_config' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/tasks/netmiko_send_config.py", line 42, in netmiko_send_config
+    raise ValueError("Must specify either config_commands or config_file")
+ValueError: Must specify either config_commands or config_file
+2026-11-12 05:26:44,509 - nornir.core.task -    ERROR -      start() - Host 'rtr3': task 'netmiko_send_config' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/tasks/netmiko_send_config.py", line 42, in netmiko_send_config
+    raise ValueError("Must specify either config_commands or config_file")
+ValueError: Must specify either config_commands or config_file
+2026-11-12 05:26:44,528 - nornir.core.task -    ERROR -      start() - Host 'sw2': task 'netmiko_send_config' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/tasks/netmiko_send_config.py", line 42, in netmiko_send_config
+    raise ValueError("Must specify either config_commands or config_file")
+ValueError: Must specify either config_commands or config_file
+2026-11-12 05:26:44,537 - nornir.core.task -    ERROR -      start() - Host 'rtr1': task 'netmiko_send_config' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/tasks/netmiko_send_config.py", line 42, in netmiko_send_config
+    raise ValueError("Must specify either config_commands or config_file")
+ValueError: Must specify either config_commands or config_file
+2026-11-12 05:26:44,552 - nornir.core.task -    ERROR -      start() - Host 'rtr2': task 'netmiko_send_config' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/tasks/netmiko_send_config.py", line 42, in netmiko_send_config
+    raise ValueError("Must specify either config_commands or config_file")
+ValueError: Must specify either config_commands or config_file
+2026-11-12 05:30:02,527 -  nornir.core -     INFO -        run() - Running task 'netmiko_send_config' with args {'command_string': ['interface loopback1', 'interface loopback2', 'interface loopback3', 'interface loopback4', 'interface loopback5', 'interface loopback6', 'interface loopback7', 'interface loopback8', 'interface loopback9', 'interface loopback10']} on 5 hosts
+2026-11-12 05:30:03,063 - nornir.core.task -    ERROR -      start() - Host 'sw2': task 'netmiko_send_config' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/tasks/netmiko_send_config.py", line 42, in netmiko_send_config
+    raise ValueError("Must specify either config_commands or config_file")
+ValueError: Must specify either config_commands or config_file
+2026-11-12 05:30:03,172 - nornir.core.task -    ERROR -      start() - Host 'sw1': task 'netmiko_send_config' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/tasks/netmiko_send_config.py", line 42, in netmiko_send_config
+    raise ValueError("Must specify either config_commands or config_file")
+ValueError: Must specify either config_commands or config_file
+2026-11-12 05:30:03,181 - nornir.core.task -    ERROR -      start() - Host 'rtr1': task 'netmiko_send_config' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/tasks/netmiko_send_config.py", line 42, in netmiko_send_config
+    raise ValueError("Must specify either config_commands or config_file")
+ValueError: Must specify either config_commands or config_file
+2026-11-12 05:30:03,180 - nornir.core.task -    ERROR -      start() - Host 'rtr3': task 'netmiko_send_config' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/tasks/netmiko_send_config.py", line 42, in netmiko_send_config
+    raise ValueError("Must specify either config_commands or config_file")
+ValueError: Must specify either config_commands or config_file
+2026-11-12 05:30:03,193 - nornir.core.task -    ERROR -      start() - Host 'rtr2': task 'netmiko_send_config' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/tasks/netmiko_send_config.py", line 42, in netmiko_send_config
+    raise ValueError("Must specify either config_commands or config_file")
+ValueError: Must specify either config_commands or config_file
+2026-11-12 05:31:28,093 -  nornir.core -     INFO -        run() - Running task 'netmiko_send_config' with args {'command_string': ['interface loopback1', 'interface loopback2', 'interface loopback3', 'interface loopback4', 'interface loopback5', 'interface loopback6', 'interface loopback7', 'interface loopback8', 'interface loopback9', 'interface loopback10']} on 5 hosts
+2026-11-12 05:31:28,736 - nornir.core.task -    ERROR -      start() - Host 'sw1': task 'netmiko_send_config' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/tasks/netmiko_send_config.py", line 42, in netmiko_send_config
+    raise ValueError("Must specify either config_commands or config_file")
+ValueError: Must specify either config_commands or config_file
+2026-11-12 05:31:28,736 - nornir.core.task -    ERROR -      start() - Host 'rtr1': task 'netmiko_send_config' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/tasks/netmiko_send_config.py", line 42, in netmiko_send_config
+    raise ValueError("Must specify either config_commands or config_file")
+ValueError: Must specify either config_commands or config_file
+2026-11-12 05:31:28,740 - nornir.core.task -    ERROR -      start() - Host 'sw2': task 'netmiko_send_config' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/tasks/netmiko_send_config.py", line 42, in netmiko_send_config
+    raise ValueError("Must specify either config_commands or config_file")
+ValueError: Must specify either config_commands or config_file
+2026-11-12 05:31:28,764 - nornir.core.task -    ERROR -      start() - Host 'rtr3': task 'netmiko_send_config' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/tasks/netmiko_send_config.py", line 42, in netmiko_send_config
+    raise ValueError("Must specify either config_commands or config_file")
+ValueError: Must specify either config_commands or config_file
+2026-11-12 05:31:28,769 - nornir.core.task -    ERROR -      start() - Host 'rtr2': task 'netmiko_send_config' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir_netmiko/tasks/netmiko_send_config.py", line 42, in netmiko_send_config
+    raise ValueError("Must specify either config_commands or config_file")
+ValueError: Must specify either config_commands or config_file
+2026-11-12 05:37:31,429 -  nornir.core -     INFO -        run() - Running task 'collect_data' with args {} on 5 hosts
+2026-11-12 05:37:32,399 - nornir.core.task -    ERROR -      start() - Host 'sw1': task 'collect_data' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ assets.py", line 38, in collect_data
+    "hostname": version.get("hostname"),
+                ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+2026-11-12 05:37:32,489 - nornir.core.task -    ERROR -      start() - Host 'sw2': task 'collect_data' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ assets.py", line 38, in collect_data
+    "hostname": version.get("hostname"),
+                ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+2026-11-12 05:37:32,490 - nornir.core.task -    ERROR -      start() - Host 'rtr1': task 'collect_data' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ assets.py", line 38, in collect_data
+    "hostname": version.get("hostname"),
+                ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+2026-11-12 05:37:32,516 - nornir.core.task -    ERROR -      start() - Host 'rtr3': task 'collect_data' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ assets.py", line 38, in collect_data
+    "hostname": version.get("hostname"),
+                ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+2026-11-12 05:37:32,518 - nornir.core.task -    ERROR -      start() - Host 'rtr2': task 'collect_data' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ assets.py", line 38, in collect_data
+    "hostname": version.get("hostname"),
+                ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+2026-11-12 05:38:53,364 -  nornir.core -     INFO -        run() - Running task 'collect_data' with args {} on 5 hosts
+2026-11-12 05:38:54,488 - nornir.core.task -    ERROR -      start() - Host 'sw2': task 'collect_data' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ assets.py", line 38, in collect_data
+    "hostname": version.get("hostname"),
+                ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+2026-11-12 05:38:54,489 - nornir.core.task -    ERROR -      start() - Host 'sw1': task 'collect_data' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ assets.py", line 38, in collect_data
+    "hostname": version.get("hostname"),
+                ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+2026-11-12 05:38:54,496 - nornir.core.task -    ERROR -      start() - Host 'rtr3': task 'collect_data' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ assets.py", line 38, in collect_data
+    "hostname": version.get("hostname"),
+                ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+2026-11-12 05:38:54,501 - nornir.core.task -    ERROR -      start() - Host 'rtr1': task 'collect_data' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ assets.py", line 38, in collect_data
+    "hostname": version.get("hostname"),
+                ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+2026-11-12 05:38:54,514 - nornir.core.task -    ERROR -      start() - Host 'rtr2': task 'collect_data' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ assets.py", line 38, in collect_data
+    "hostname": version.get("hostname"),
+                ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+2026-11-12 05:40:29,225 -  nornir.core -     INFO -        run() - Running task 'collect_data' with args {} on 5 hosts
+2026-11-12 05:40:30,208 - nornir.core.task -    ERROR -      start() - Host 'sw1': task 'collect_data' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ assets.py", line 38, in collect_data
+    "hostname": version.get("hostname"),
+                ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+2026-11-12 05:40:30,235 - nornir.core.task -    ERROR -      start() - Host 'rtr1': task 'collect_data' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ assets.py", line 38, in collect_data
+    "hostname": version.get("hostname"),
+                ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+2026-11-12 05:40:30,246 - nornir.core.task -    ERROR -      start() - Host 'sw2': task 'collect_data' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ assets.py", line 38, in collect_data
+    "hostname": version.get("hostname"),
+                ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+2026-11-12 05:40:30,261 - nornir.core.task -    ERROR -      start() - Host 'rtr3': task 'collect_data' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ assets.py", line 38, in collect_data
+    "hostname": version.get("hostname"),
+                ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+2026-11-12 05:40:30,270 - nornir.core.task -    ERROR -      start() - Host 'rtr2': task 'collect_data' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ assets.py", line 38, in collect_data
+    "hostname": version.get("hostname"),
+                ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+2026-11-12 05:40:46,648 -  nornir.core -     INFO -        run() - Running task 'collect_data' with args {} on 5 hosts
+2026-11-12 05:40:47,905 - nornir.core.task -    ERROR -      start() - Host 'sw2': task 'collect_data' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ assets.py", line 38, in collect_data
+    "hostname": version.get("hostname"),
+                ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+2026-11-12 05:40:47,908 - nornir.core.task -    ERROR -      start() - Host 'sw1': task 'collect_data' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ assets.py", line 38, in collect_data
+    "hostname": version.get("hostname"),
+                ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+2026-11-12 05:40:47,913 - nornir.core.task -    ERROR -      start() - Host 'rtr2': task 'collect_data' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ assets.py", line 38, in collect_data
+    "hostname": version.get("hostname"),
+                ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+2026-11-12 05:40:47,915 - nornir.core.task -    ERROR -      start() - Host 'rtr3': task 'collect_data' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ assets.py", line 38, in collect_data
+    "hostname": version.get("hostname"),
+                ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+2026-11-12 05:40:47,916 - nornir.core.task -    ERROR -      start() - Host 'rtr1': task 'collect_data' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ assets.py", line 38, in collect_data
+    "hostname": version.get("hostname"),
+                ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+2026-11-12 05:41:18,264 -  nornir.core -     INFO -        run() - Running task 'collect_data' with args {} on 5 hosts
+2026-11-12 05:41:19,341 - nornir.core.task -    ERROR -      start() - Host 'sw2': task 'collect_data' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ assets.py", line 38, in collect_data
+    "hostname": version.get("hostname"),
+                ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+2026-11-12 05:41:19,356 - nornir.core.task -    ERROR -      start() - Host 'sw1': task 'collect_data' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ assets.py", line 38, in collect_data
+    "hostname": version.get("hostname"),
+                ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+2026-11-12 05:41:19,363 - nornir.core.task -    ERROR -      start() - Host 'rtr2': task 'collect_data' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ assets.py", line 38, in collect_data
+    "hostname": version.get("hostname"),
+                ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+2026-11-12 05:41:19,363 - nornir.core.task -    ERROR -      start() - Host 'rtr3': task 'collect_data' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ assets.py", line 38, in collect_data
+    "hostname": version.get("hostname"),
+                ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+2026-11-12 05:41:19,375 - nornir.core.task -    ERROR -      start() - Host 'rtr1': task 'collect_data' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ assets.py", line 38, in collect_data
+    "hostname": version.get("hostname"),
+                ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+2026-11-12 05:42:33,798 -  nornir.core -     INFO -        run() - Running task 'collect_data' with args {} on 5 hosts
+2026-11-12 05:42:34,865 - nornir.core.task -    ERROR -      start() - Host 'sw2': task 'collect_data' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ assets.py", line 38, in collect_data
+    "hostname": version.get("hostname"),
+                ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+2026-11-12 05:42:34,867 - nornir.core.task -    ERROR -      start() - Host 'sw1': task 'collect_data' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ assets.py", line 38, in collect_data
+    "hostname": version.get("hostname"),
+                ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+2026-11-12 05:42:34,871 - nornir.core.task -    ERROR -      start() - Host 'rtr1': task 'collect_data' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ assets.py", line 38, in collect_data
+    "hostname": version.get("hostname"),
+                ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+2026-11-12 05:42:34,877 - nornir.core.task -    ERROR -      start() - Host 'rtr2': task 'collect_data' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ assets.py", line 38, in collect_data
+    "hostname": version.get("hostname"),
+                ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+2026-11-12 05:42:34,894 - nornir.core.task -    ERROR -      start() - Host 'rtr3': task 'collect_data' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ assets.py", line 38, in collect_data
+    "hostname": version.get("hostname"),
+                ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+2026-11-12 05:42:55,262 -  nornir.core -     INFO -        run() - Running task 'collect_data' with args {} on 5 hosts
+2026-11-12 05:42:56,321 - nornir.core.task -    ERROR -      start() - Host 'sw1': task 'collect_data' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ assets.py", line 38, in collect_data
+    "hostname": version.get("hostname"),
+                ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+2026-11-12 05:42:56,331 - nornir.core.task -    ERROR -      start() - Host 'sw2': task 'collect_data' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ assets.py", line 38, in collect_data
+    "hostname": version.get("hostname"),
+                ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+2026-11-12 05:42:56,332 - nornir.core.task -    ERROR -      start() - Host 'rtr3': task 'collect_data' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ assets.py", line 38, in collect_data
+    "hostname": version.get("hostname"),
+                ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+2026-11-12 05:42:56,357 - nornir.core.task -    ERROR -      start() - Host 'rtr1': task 'collect_data' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ assets.py", line 38, in collect_data
+    "hostname": version.get("hostname"),
+                ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+2026-11-12 05:42:56,358 - nornir.core.task -    ERROR -      start() - Host 'rtr2': task 'collect_data' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ assets.py", line 38, in collect_data
+    "hostname": version.get("hostname"),
+                ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'

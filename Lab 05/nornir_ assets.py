@@ -14,10 +14,11 @@ from nornir import InitNornir
 from nornir_utils.plugins.functions import print_result
 from nornir_netmiko.tasks import netmiko_send_command, netmiko_save_config, netmiko_send_config
 from nornir.core.task import Task, Result
-import sys, getpass, json
+import sys, json, os
+from pprint import pprint
 
 #variables
-password = getpass.getpass("Password: ")
+password = os.environ.get('PASS')
 COLUMNS = ["hostname","model","serial","version","interfaces","uptime"]
 
 #functions
@@ -63,8 +64,11 @@ def main():
     conn.inventory.defaults.password = password
 
     #results variable from collect_data and the print
-    results = conn.run(task=collect_data)
-
+    try:
+        results = conn.run(task=collect_data)
+    except Exception as e:
+        print(e)
+    pprint(results)
     #assets variable from sorted results
 
     #write report and print that you did that
@@ -72,14 +76,6 @@ def main():
 
     #if report failed, says so and exit
 
-    Results = []
-    try:
-        conn = InitNornir(config_file="config.yaml")
-        conn.inventory.defaults.password = password
-        Results.append(conn.run(task=commands(), name="show commands", commands=command_set))
-    except Exception as e:
-        print(e)
-        sys.exit(1)
-    
-    for r in Results:
-        print_result(r)
+
+if __name__ == "__main__":
+    sys.exit(main())
