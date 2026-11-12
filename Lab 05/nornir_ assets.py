@@ -42,6 +42,7 @@ def collect_data(task: Task):
         "interfaces": len(interfaces),
         "uptime": version.get("uptime")
     }
+    print(record)
     return Result(host=task.host, result=record)
                 
 def report(assets):
@@ -50,6 +51,7 @@ def report(assets):
     (one table row per device, the same columns as Lab 2’s inventory-report.yml ) and assets.json. A device whose
     output fails to parse must be marked failed, not silently skipped. print
     """
+    ##UNDERSTAND THIS
     header = "| " + " | ".join(COLUMNS) + " |"
     rule = "|" + "---|" * len(COLUMNS)
     rows = ["| " + " | ".join(str(a[c]) for c in COLUMNS) + " |" for a in assets]
@@ -64,18 +66,23 @@ def main():
     conn.inventory.defaults.password = password
 
     #results variable from collect_data and the print
-    try:
-        results = conn.run(task=collect_data)
-    except Exception as e:
-        print(e)
-    pprint(results)
+    results = conn.run(task=collect_data)
+    print_result(results)
+
     #assets variable from sorted results
-
+    assets = sorted(
+        #UNDERSTAND THIS
+        (multi[0].result for multi in results.values() if not multi.failed), key=lambda a: a["hostname"],
+    )
     #write report and print that you did that
-
+    if assets:
+        report(assets)
+        print(f"Wrote {len(assets)} devices to report.md and assets.json")
 
     #if report failed, says so and exit
-
+    if results.failed:
+        print(f"Failed hosts: {sorted(results.failed_hosts)}")
+        sys.exit(1)
 
 if __name__ == "__main__":
     sys.exit(main())
