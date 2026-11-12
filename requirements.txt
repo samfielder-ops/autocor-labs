@@ -1,0 +1,42 @@
+#requirements.txt - autocore-labs
+#general
+
+
+# Lab 2/9 - Ansible
+ansible
+ansible-pylibssh   
+ansible-lint
+yamllint
+
+# Lab 4/6/10 - REST and RESTCONF
+requests
+
+# Lab 5 - Python libraries
+nornir
+nornir_utils
+nornir_netmiko
+scrapli==2025.1.30
+netmiko
+textfsm
+ntc-templates
+paramiko<4 # need because CML routers were doing old diffie-hellman groups (sha1)
+
+# Lab 7 - CML as code
+virl2-client
+jinja2
+
+#lab 8/9 - YANG and YAML
+pyang
+pyyaml
+
+# Lab 11
+pyats[full]
+
+#lab 12
+pydantic
+hvac
+
+# Lab 13
+fastmcp
+pytest
+anthropic

@@ -1419,3 +1419,52 @@ Traceback (most recent call last):
     "hostname": version.get("hostname"),
                 ^^^^^^^^^^^
 AttributeError: 'list' object has no attribute 'get'
+2026-11-12 06:00:04,813 -  nornir.core -     INFO -        run() - Running task 'collect_data' with args {} on 5 hosts
+2026-11-12 06:00:05,776 - nornir.core.task -    ERROR -      start() - Host 'sw2': task 'collect_data' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ assets.py", line 38, in collect_data
+    "hostname": version.get("hostname"),
+                ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+2026-11-12 06:00:05,778 - nornir.core.task -    ERROR -      start() - Host 'sw1': task 'collect_data' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ assets.py", line 38, in collect_data
+    "hostname": version.get("hostname"),
+                ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+2026-11-12 06:00:05,811 - nornir.core.task -    ERROR -      start() - Host 'rtr3': task 'collect_data' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ assets.py", line 38, in collect_data
+    "hostname": version.get("hostname"),
+                ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+2026-11-12 06:00:05,817 - nornir.core.task -    ERROR -      start() - Host 'rtr2': task 'collect_data' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ assets.py", line 38, in collect_data
+    "hostname": version.get("hostname"),
+                ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+2026-11-12 06:00:05,829 - nornir.core.task -    ERROR -      start() - Host 'rtr1': task 'collect_data' failed
+Traceback (most recent call last):
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/my_env/lib/python3.12/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cml-lab-admin/cml-labs/autocor-labs/Lab 05/nornir_ assets.py", line 38, in collect_data
+    "hostname": version.get("hostname"),
+                ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+2026-11-12 06:04:45,212 -  nornir.core -     INFO -        run() - Running task 'collect_data' with args {} on 5 hosts
+2026-11-12 06:06:48,964 -  nornir.core -     INFO -        run() - Running task 'collect_data' with args {} on 5 hosts
+2026-11-12 06:07:01,839 -  nornir.core -     INFO -        run() - Running task 'collect_data' with args {} on 5 hosts

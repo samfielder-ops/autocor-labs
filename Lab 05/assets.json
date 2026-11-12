@@ -1,0 +1,62 @@
+[
+  {
+    "hostname": "R1",
+    "model": [
+      "IOSv"
+    ],
+    "serial": [
+      "9D314IDZAV7IXCXOT8RAO"
+    ],
+    "version": "15.9(3)M10",
+    "interfaces": 4,
+    "uptime": "17 hours, 47 minutes"
+  },
+  {
+    "hostname": "R2",
+    "model": [
+      "IOSv"
+    ],
+    "serial": [
+      "9NBS949A9XL48FVD9U70W"
+    ],
+    "version": "15.9(3)M10",
+    "interfaces": 4,
+    "uptime": "17 hours, 44 minutes"
+  },
+  {
+    "hostname": "R3",
+    "model": [
+      "IOSv"
+    ],
+    "serial": [
+      "98JCJJOVAVPP6QTILN9PC"
+    ],
+    "version": "15.9(3)M10",
+    "interfaces": 4,
+    "uptime": "17 hours, 47 minutes"
+  },
+  {
+    "hostname": "S1",
+    "model": [
+      "C9KV-Q200-8P"
+    ],
+    "serial": [
+      "CMLQ200"
+    ],
+    "version": "17.15.3",
+    "interfaces": 26,
+    "uptime": "17 hours, 50 minutes"
+  },
+  {
+    "hostname": "S2",
+    "model": [
+      "C9KV-Q200-8P"
+    ],
+    "serial": [
+      "CMLQ200"
+    ],
+    "version": "17.15.3",
+    "interfaces": 26,
+    "uptime": "17 hours, 50 minutes"
+  }
+]

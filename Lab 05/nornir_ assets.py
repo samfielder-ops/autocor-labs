@@ -29,20 +29,19 @@ def parse(task, command):
 
 def collect_data(task: Task):
     #variable for each command, parse
-    version = parse(task, "show version")
+    version = parse(task, "show version")[0]
     inventory = parse(task, "show inventory")
     interfaces = parse(task, "show ip interface brief")
 
     chassis = inventory[0] if inventory else {}
     record = {
-        "hostname": version.get("hostname"),
+        "hostname": version.get("hostname") or task.host.name,
         "model": version.get("hardware") or chassis.get("pid", ""),
         "serial": version.get("serial") or chassis.get("sn", ""),
         "version": version.get("version"),
         "interfaces": len(interfaces),
         "uptime": version.get("uptime")
     }
-    print(record)
     return Result(host=task.host, result=record)
                 
 def report(assets):
@@ -67,7 +66,7 @@ def main():
 
     #results variable from collect_data and the print
     results = conn.run(task=collect_data)
-    print_result(results)
+    #print_result(results)
 
     #assets variable from sorted results
     assets = sorted(
